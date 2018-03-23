@@ -1,0 +1,9 @@
+type Query{
+	bookmarks(username: String!): [Bookmark]
+}
+
+type Bookmark{
+	id: String
+	uri: String
+	description: String
+}
