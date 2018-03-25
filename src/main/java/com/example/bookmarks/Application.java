@@ -17,11 +17,11 @@ public class Application {
 	}
 	
 	@Bean
-	GraphQLSchema schema(BookmarkRepository bookmarkRepository){
+	GraphQLSchema schema(BookmarkRepository bookmarkRepository, AccountRepository accountRepository){
 		
 		SchemaParserBuilder builder = SchemaParser.newParser();
 		builder.file("bookmarks.graphqls");
-		builder.resolvers(new Query(bookmarkRepository), new BookmarkResolver());
+		builder.resolvers(new Query(bookmarkRepository), new BookmarkResolver(), new Mutation(accountRepository, bookmarkRepository));
 		return builder.build().makeExecutableSchema();
 		
 	}

@@ -2,8 +2,13 @@ type Query{
 	bookmarks(username: String!): [Bookmark]
 }
 
+type Mutation{
+	createUser(username: String!):String!
+	addBookmark(username: String!, uri: String, description: String):String
+}
+
 type Bookmark{
-	id: String
+	id: ID
 	uri: String
 	description: String
 }
